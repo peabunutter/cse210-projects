@@ -4,9 +4,9 @@ public class Journal
 {
     
     DateTime day = DateTime.Now;
-    public List<Entry> _entries;
-    PromptGenerator journalCreationPG = new PromptGenerator();
-    Journal journalCreationJ = new Journal();
+    public List<string> _entries = new List<string>();
+    PromptGenerator journalCreation = new PromptGenerator();
+    string filename = "entries.txt";
     
     public void addEntry(Entry newEntry)
     {
@@ -14,11 +14,13 @@ public class Journal
         Entry entry1 = new Entry()
         {
             _date = dayText,
-            _promptText = journalCreationPG.GetRandomPrompt(),
-            _entryText = Console.ReadLine(),
+            _promptText = journalCreation.GetRandomPrompt(),
         };
+        entry1.Display();
 
-        journalCreationJ._entries.Add(entry1);
+        string append = $"{entry1._date}\n{entry1._promptText}\n{entry1._entryText}\n|";
+
+        _entries.Add(append);
     }
     public void DisplayAll()
     {
@@ -29,20 +31,23 @@ public class Journal
     }
     public void SaveToFile(string file)
     {
-        string filename = "entries.txt";
-        using (StreamWriter outputFile = new(filename))
+        using (StreamWriter outputFile = new StreamWriter(filename))
         {
             outputFile.WriteLine(_entries);
         }
     }
     public void LoadFromFile(string file)
     {
-        string filename = "entries.txt";
         string[] lines = System.IO.File.ReadAllLines(filename);
 
         foreach (string line in lines)
         {
+            string[] parts = line.Split("|");
 
+            foreach (string entry in parts)
+            {
+                _entries.Add(entry);
+            }
         }
     }
 }

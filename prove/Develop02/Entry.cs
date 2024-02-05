@@ -10,6 +10,6 @@ public class Entry
     {
         Console.WriteLine(_date);
         Console.WriteLine(_promptText);
-        string text = _entryText;
+        _entryText = Console.ReadLine();
     }
 }
