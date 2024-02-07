@@ -1,13 +1,13 @@
 using System;
+using System.IO.Enumeration;
 
 public class Journal
 {
-    
+
     DateTime day = DateTime.Now;
     public List<string> _entries = new List<string>();
     PromptGenerator journalCreation = new PromptGenerator();
-    string filename = "entries.txt";
-    
+
     public void addEntry(Entry newEntry)
     {
         string dayText = day.ToShortDateString();
@@ -31,18 +31,21 @@ public class Journal
     }
     public void SaveToFile(string file)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(file))
         {
-            outputFile.WriteLine(_entries);
+            foreach (string outputEntry in _entries)
+            {
+                outputFile.WriteLine(outputEntry);
+            }
         }
     }
     public void LoadFromFile(string file)
     {
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        var lines = System.IO.File.ReadAllLines(file);
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split("|");
+            var parts = line.Split("|");
 
             foreach (string entry in parts)
             {
