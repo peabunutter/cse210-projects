@@ -1,0 +1,34 @@
+// list words<Trust, in, the, lord, with, all, thine, heart>
+// List<int> randomList = new List<int>;
+
+// while (randomList<2> = null)
+// {
+//     do
+//     {
+//         int randomInt = random;
+//         bool hidden
+//         if words<randomInt> = "_"
+//         {
+//             hidden = true
+//         }
+//         else
+//         {
+//             hidden = false
+//         }
+//     } while (hidden == true)
+//     randomList.Add(randomInt)
+    
+// }
+
+
+// string testWord = "word";
+// List<string> text = new List<string>();
+// text.Add("_");
+// text.Add("_");
+// text.Add("_");
+// testWord = "";
+// foreach (string item in text)
+// {
+//     testWord = testWord + item;
+// }
+// Console.WriteLine(testWord);

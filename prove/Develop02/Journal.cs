@@ -49,7 +49,7 @@ public class Journal
 
             foreach (string entry in parts)
             {
-                _entries.Add(entry);
+                _entries.Add(entry.ToString());    
             }
         }
     }

@@ -17,6 +17,8 @@ public class PromptGenerator
         Prompts.Add("How did I see the hand of the Lord in my life today?");
         Prompts.Add("What was the strongest emotion I felt today?");
         Prompts.Add("If I had one thing I could do over today, what would it be?");
+        Prompts.Add("What is one thing that inspipred you today?");
+        Prompts.Add("What is one recreational activity you did today?");
 
         Random random = new Random();
         int rand = random.Next(Prompts.Count);

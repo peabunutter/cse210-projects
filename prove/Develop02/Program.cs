@@ -1,3 +1,5 @@
+// For extra credit, I added two new prompts the program can randomly choose from
+
 using System;
 using System.Globalization;
 using System.Reflection.Metadata.Ecma335;
