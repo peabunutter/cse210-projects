@@ -4,52 +4,29 @@ using Microsoft.VisualBasic.FileIO;
 
 public class Word
 {
-    public string _text;
-    public bool _isHidden;
+    private string _text;
+    private bool _isHidden = false;
 
-    Word(string text)
+    public Word(string text)
     {
         _text = text;
-        if (IsHidden() == true)
-        {
-            
-        }
     }
-    private void Hide()
+    public void Hide()
     {
-        string text2 = "";
+        string _text2 = "";
         foreach (char c in _text)
         {
-            text2 = text2 + c;
+            _text2 = _text2 + "_";
         }
-        _text = text2;
+        _text = _text2;
         _isHidden = true;
     }
-    private void Show()
+    public bool IsHidden()
     {
-        _isHidden = false;
-    }
-    private bool IsHidden()
-    {
-        if (_isHidden == true)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return _isHidden;
     }
     public string GetDisplayText()
     {
-        if (_isHidden == true)
-        {
-            Hide();
-        }
-        else
-        {
-            Show();
-        }
         return _text;
     }
 }

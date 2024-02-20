@@ -1,24 +1,23 @@
 public class Reference
 {
-    public string _book;
-    public int _chapter;
-    public int _verse;
-    public int _endVerse;
+    private string _book;
+    private int _chapter;
+    private int _startVerse;
+    private int _endVerse;
 
-    Reference(string book, int chapter, int verse)
+    // Reference(string _book, int _chapter, int verse)
+    // {
+    // }
+    public Reference(string book, int chapter, int startVerse, int endVerse)
     {
-    }
-    Reference(string book, int chapter, int startVerse, int endVerse)
-    {
-        book = "Proverbs";
-        chapter = 3;
-        startVerse = 5;
-        endVerse = 6;
-        Console.WriteLine($"{book} {chapter}: {startVerse}-{endVerse}");
+        _book = book;
+        _chapter = chapter;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
     }
     public string GetDisplayText()
     {
-        
-        return "placeholder return";
+        string fullReference = $"{_book} {_chapter}: {_startVerse}-{_endVerse}";
+        return fullReference;
     }
 }
