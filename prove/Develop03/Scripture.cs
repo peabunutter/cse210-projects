@@ -2,7 +2,6 @@ using System.Net.Quic;
 
 public class Scripture
 {
-    private Reference ScriptureReference = new Reference("Proverbs", 3, 5, 6);
     private List<Word> _words = new List<Word>();
     private List<int> _choice = new List<int>();
 

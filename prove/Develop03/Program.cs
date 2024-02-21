@@ -27,7 +27,7 @@ class Program
             {
                 break;
             }
-        } while (input != "quit" || !scripture.IsCompletelyHidden());
+        } while (input != "quit");
         
         Console.WriteLine(referenceText);
         Console.WriteLine($" {scripture.GetDisplayText()}");
