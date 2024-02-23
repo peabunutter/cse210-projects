@@ -5,8 +5,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write(">");
-        Console.ReadLine();
         int choice;
         BreathingActivity breathing = new BreathingActivity();
         ReflectingActivity reflect = new ReflectingActivity();
