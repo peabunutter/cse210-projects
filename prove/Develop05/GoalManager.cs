@@ -6,9 +6,6 @@ public class GoalManager
 {
     public List<Goal> _goals;
     private int _score;
-    SimpleGoal simpleGoal;
-    EternalGoal eternalGoal;
-    ChecklistGoal checklistGoal;
 
     public GoalManager()
     {
@@ -62,11 +59,11 @@ public class GoalManager
         int goalPrize = int.Parse(Console.ReadLine());
         if (choice == 1)
         {
-            _goals.AddRange(new List<Goal>{new SimpleGoal(goalName, goalDesc, goalPrize)});
+            _goals.Add(new SimpleGoal(goalName, goalDesc, goalPrize));
         }
         if (choice == 2)
         {
-            _goals.AddRange(new List<Goal>{new EternalGoal(goalName, goalDesc, goalPrize)});
+            _goals.Add(new EternalGoal(goalName, goalDesc, goalPrize));
         }
         if (choice == 3)
         {
@@ -86,19 +83,20 @@ public class GoalManager
         }
         Console.WriteLine("Which goal did you accomplish? ");
         int goalRecord = int.Parse(Console.ReadLine());
-        if (goalRecord == 1)
+        Goal goal = _goals[goalRecord - 1];
+        if (goal is SimpleGoal)
         {
-            _score += simpleGoal.Points();
-            simpleGoal.RecordEvent();
+            _score += goal.Points();
+            goal.RecordEvent();
         }
-        if (goalRecord == 2)
+        else if (goal is EternalGoal)
         {
-            _score += eternalGoal.Points();
+            _score += goal.Points();
         }
-        if (goalRecord == 3)
+        else if (goal is ChecklistGoal)
         {
-            _score += checklistGoal.Points();
-            checklistGoal.RecordEvent();
+            _score += goal.Points();
+            goal.RecordEvent();
         }
     }
     public void SaveGoals()
@@ -117,12 +115,23 @@ public class GoalManager
 
         foreach (string line in lines)
         {
-            var parts = line.Split("|");
-
-            foreach (Goal entry in _goals)
+            var goalParts = line.Split(":");
+            string goalType = goalParts[0];
+            var goalBits = goalParts[1].Split("|");
+            if (goalType == "SimpleGoal")
             {
-                _goals.Add(entry);    
+                SimpleGoal sg = new SimpleGoal(goalBits[0], goalBits[1], int.Parse(goalBits[2]));
+                _goals.Add(sg);
             }
+            else if (goalType == "EternalGoal")
+            {
+                EternalGoal eg = new EternalGoal(goalBits[0], goalBits[1], int.Parse(goalBits[2]));
+            }
+            else if (goalType == "ChecklistGoal")
+            {
+                ChecklistGoal cg = new ChecklistGoal(goalBits[0], goalBits[1], int.Parse(goalBits[2]), int.Parse(goalBits[3]), int.Parse(goalBits[4]));
+            }
+            
         }
     }
 }

@@ -1,5 +1,7 @@
 public class EternalGoal : Goal
 {
+    private string _type;
+
     public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
         
@@ -15,7 +17,7 @@ public class EternalGoal : Goal
     }
     public override string GetStringRepresentation()
     {
-        string rep = $"{_shortName}|{_description}|{_points}";
+        string rep = $"{_type}:{_shortName}|{_description}|{_points}";
         return rep;
     }
 }
